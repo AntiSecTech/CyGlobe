@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Attacks Globe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="globeCanvas"></canvas>
+    <div id="stats" class="stats">
+        <div class="stat-item">
+            <h3></h3>
+            <span id="activeAttacks"></span>
+        </div>
+        <div class="stat-item">
+            <h3></h3>
+            <div id="attackTypes"></div>
+        </div>
+    </div>
+    
+    <div id="legend" class="legend">
+        <h3>Attack Types</h3>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #ff0000"></span>
+            <span>Malware</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #ff6600"></span>
+            <span>DDoS</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #ffff00"></span>
+            <span>Phishing</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #00ff00"></span>
+            <span>Brute Force</span>
+        </div>
+        <div class="legend-item"></div>
+            <span class="legend-color" style="background-color: #e703e7"></span>
+            <span>Ransomeware</span>
+        </div>
+    </div>
+
+    <div id="log-window" class="log-window">
+        <h3>Attack Log</h3>
+        <div id="log-content"></div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // Check server connection before loading main script
+        fetch('http://localhost:3000/api/test')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server connection successful:', data);
+                // Load main script after confirming server connection
+                const script = document.createElement('script');
+                script.src = 'script.js';
+                document.body.appendChild(script);
+            })
+            .catch(error => {
+                console.error('Failed to connect to backend server:', error);
+                alert('Please ensure the backend server is running on port 3000');
+            });
+    </script>
+</body>
+</html> 
