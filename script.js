@@ -505,8 +505,8 @@ function init() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.rotateSpeed = 0.5;
-    controls.minDistance = 2;
-    controls.maxDistance = 8;
+    controls.minDistance = 2.3;
+    controls.maxDistance = 9.2;
 
     createGlobe();
     createParticles();
